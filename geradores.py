@@ -18,19 +18,37 @@ def geraCPF():
 
 
 def geraRG():
-  rg = [random.randint(0, 9) for _ in range(8)]
+    def calcula_digito_verificador(rg_parcial):
+        soma = 0
+        for i, valor in enumerate(rg_parcial):
+            soma += int(valor) * (10 - i)
+        digito = 11 - (soma % 11)
+        return digito if digito <= 9 else 0
 
-  # Cálculo do primeiro dígito verificador
-  soma1 = sum((valor * (10 - indice)) for indice, valor in enumerate(rg))
-  digito1 = 11 - (soma1 % 11)
+    rg_base = [random.randint(0, 9) for _ in range(8)]
+    digito1 = calcula_digito_verificador(rg_base)
+    rg_base.append(digito1)
+    digito2 = calcula_digito_verificador(rg_base)
+    rg_base.append(digito2)
 
-  # Cálculo do segundo dígito verificador
-  rg_com_digito1 = rg + [digito1]
-  soma2 = sum(
-      (valor * (11 - indice)) for indice, valor in enumerate(rg_com_digito1))
-  digito2 = 11 - (soma2 % 11)
+    return ''.join(map(str, rg_base))
 
-  # Formatar o RG como uma string
-  rg_str = ''.join(map(str, rg)) + str(digito1) + str(digito2)
 
-  return rg_str
+def geraCNPJ():
+    def calcula_digito_verificador(cnpj_parcial):
+        if len(cnpj_parcial) == 12:
+            multiplicadores = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+        else:
+            multiplicadores = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+
+        soma = sum(int(c) * m for c, m in zip(cnpj_parcial, multiplicadores))
+        resto = soma % 11
+        return 0 if resto < 2 else 11 - resto
+
+    cnpj_base = [random.randint(0, 9) for _ in range(12)]
+    digito1 = calcula_digito_verificador(cnpj_base)
+    cnpj_base.append(digito1)
+    digito2 = calcula_digito_verificador(cnpj_base)
+    cnpj_base.append(digito2)
+
+    return ''.join(map(str, cnpj_base))

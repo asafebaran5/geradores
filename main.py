@@ -1,17 +1,21 @@
-from geradores import geraCPF, geraRG
+import argparse
+from arquivos import gerar_cpfs, gerar_rgs, gerar_cnpjs
 
-# Cria o arquivo "cpf.txt" e abre para escrita
-with open("cpf.txt", "w") as arquivo:
-  for i in range(1000):
-    cpf = geraCPF()
-    arquivo.write(cpf + "\n")
+# Configurar argumentos de linha de comando
+parser = argparse.ArgumentParser(description="Gerar documentos (CPF, RG, CNPJ).")
+parser.add_argument("--cpf", type=int, help="Número de CPFs a gerar.")
+parser.add_argument("--rg", type=int, help="Número de RGs a gerar.")
+parser.add_argument("--cnpj", type=int, help="Número de CNPJs a gerar.")
 
-print("Arquivo 'cpf.txt' criado e CPFs gerados e salvos nele.")
+# Analisar os argumentos da linha de comando
+args = parser.parse_args()
 
-# Cria o arquivo "rg.txt" e abre para escrita
-with open("rg.txt", "w") as arquivo:
-  for i in range(1000):
-    rg = geraRG()
-    arquivo.write(rg + "\n")
-
-print("Arquivo 'rg.txt' criado e RGs gerados e salvos nele.")
+# Verificar quais geradores foram escolhidos
+if args.cpf is not None:
+    gerar_cpfs(args.cpf)
+if args.rg is not None:
+    gerar_rgs(args.rg)
+if args.cnpj is not None:
+    gerar_cnpjs(args.cnpj)
+if not any(vars(args).values()):
+    print("Nenhum gerador escolhido. Use os argumentos --cpf, --rg e/ou --cnpj para escolher quantos geradores deseja executar.")
