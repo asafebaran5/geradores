@@ -1,12 +1,20 @@
-# Gerador de CPFs e RGs Aleatórios
+# Gerador de CPFs, RGs e CNPJs Aleatórios
 
-Este é um projeto simples em Python que gera números de CPFs e RGs aleatórios e os salva em arquivos de texto.
+Este é um projeto em Python que gera números de CPFs, RGs e CNPJs aleatórios e os salva em arquivos de texto, para serem utilizados em massas de teste.
+
+## Tabela de Conteúdos
+
+- [Requisitos](#requisitos)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Contribuições](#contribuições)
+- [Licença](#licença)
 
 ## Requisitos
 
-Antes de executar este projeto, certifique-se de que você tem Python instalado em seu sistema.
+Antes de executar este projeto, certifique-se de que você tem [Python](https://www.python.org/downloads/) instalado em seu sistema.
 
-## Como usar
+## Instalação
 
 1. Clone o repositório para o seu sistema local:
 
@@ -18,12 +26,65 @@ Antes de executar este projeto, certifique-se de que você tem Python instalado 
     ```bash
     cd seu-projeto
 
-3. Execute o script principal main.py:
+## Uso
+
+### Gerar CPFs
+
+1. Execute o script principal main.py com o seguinte sufixo:
 
     ```bash
-    python main.py
+    python main.py --cpf 1000
 
-Isso gerará 1000 números de CPFs em um arquivo chamado cpf.txt e 1000 números de RGs em um arquivo chamado rg.txt no diretório do projeto.
+Isso gerará 1000 números de CPFs em um arquivo chamado `cpf.txt` no diretório `massas`.
+
+> **Alerta:** em alguns casos, pode ser necessário usar `python3` em vez de `python` para chamar o interpretador Python 3 no Linux.
+
+### Gerar RGs
+
+1. Execute o script principal main.py com o seguinte sufixo:
+
+    ```bash
+    python main.py --rg 1000
+
+Isso gerará 1000 números de RGs em um arquivo chamado `rg.txt` no diretório `massas`.
+
+### Gerar CNPJs
+
+1. Execute o script principal main.py com o seguinte sufixo:
+
+    ```bash
+    python main.py --cnpj 1000
+
+Isso gerará 1000 números de CNPJs
+ em um arquivo chamado `cnpj.txt` no diretório `massas`.
+
+ ### Gerar todos os documentos
+
+1. Execute o script principal main.py com o seguinte sufixo:
+
+    ```bash
+    python main.py --cpf 1000 --rg 1000 --cnpj 1000
+
+Isso gerará 1000 números de CPFs, RGs e CNPJs 
+no diretório `massas`, cada um com seu arquivo correspondente.
+
+> **Lembre-se:** Caso queira gerar somente CPFs e RGs não é obrigatório colocar todos os argumentos você pode seleciona-los de acordo com sua vontade, isso é válido para todos os documentos
+
+ ### Retirar o nome da variável da primeira linha
+
+Caso queira que seus arquivos de massa não contenham o nome da variável (cpf, rg ou cnpj) na primeira linha adicione o argumento `-n`
+
+1. Execute o script principal main.py com o seguinte sufixo:
+
+    ```bash
+    python main.py --cpf 1000 --rg 1000 --cnpj 1000 -n
+
+Isso gerará 1000 números de CNPJs
+ em um arquivo chamado `cnpj.txt` no diretório `massas`.
+
+> **Lembre-se:** O argumento `-n` é valido para qualquer comando.
+
+> **Alerta:** em alguns casos, pode ser necessário usar `python3` em vez de `python` para chamar o interpretador Python 3 no Linux.
 
 ## Contribuições
 
