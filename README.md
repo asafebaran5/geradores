@@ -8,7 +8,6 @@ Este é um projeto em Python que gera números de CPFs, RGs e CNPJs aleatórios 
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Contribuições](#contribuições)
-- [Licença](#licença)
 
 ## Requisitos
 
@@ -91,4 +90,4 @@ Isso gerará 1000 números de CNPJs
 Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) ou enviar solicitações de pull (pull requests) para melhorar este projeto.
 
 
-Este projeto foi criado por Asafe Baran.
+Este projeto foi criado por [Asafe Baran](https://github.com/asafebaran5).
