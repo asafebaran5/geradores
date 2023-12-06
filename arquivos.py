@@ -8,9 +8,12 @@ def gerar_cpfs(quantidade):
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "cpf.txt"), "w") as arquivo:
         arquivo.write('cpf' + '\n')
-        for _ in range(quantidade):
+        for i in range(quantidade):
             cpf = geraCPF()
-            arquivo.write(cpf + "\n")
+            if i == quantidade - 1:
+                arquivo.write(cpf)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(cpf + "\n")
     print(f"{quantidade} CPFs gerados e salvos em 'massas/cpf.txt'.")
 
 # Função para gerar RGs
@@ -19,9 +22,12 @@ def gerar_rgs(quantidade):
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "rg.txt"), "w") as arquivo:
         arquivo.write('rg' + '\n')
-        for _ in range(quantidade):
+        for i in range(quantidade):
             rg = geraRG()
-            arquivo.write(rg + "\n")
+            if i == quantidade - 1:
+                arquivo.write(rg)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(rg + "\n")
     print(f"{quantidade} RGs gerados e salvos em 'massas/rg.txt'.")
 
 # Função para gerar CNPJs
@@ -30,10 +36,14 @@ def gerar_cnpjs(quantidade):
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "cnpj.txt"), "w") as arquivo:
         arquivo.write('cnpj' + '\n')
-        for _ in range(quantidade):
+        for i in range(quantidade):
             cnpj = geraCNPJ()
-            arquivo.write(cnpj + "\n")
+            if i == quantidade - 1:
+                arquivo.write(cnpj)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(cnpj + "\n")
     print(f"{quantidade} CNPJs gerados e salvos em 'massas/cnpj.txt'.")
+
 
 
 # Função para gerar CPFs sem o nome da variável
@@ -41,27 +51,33 @@ def gerar_cpfs_n(quantidade):
     pasta = "massas"
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "cpf.txt"), "w") as arquivo:
-        for _ in range(quantidade):
+        for i in range(quantidade):
             cpf = geraCPF()
-            arquivo.write(cpf + "\n")
-    print(f"{quantidade} CPFs gerados e salvos em 'massas/cpf.txt'.")
+            if i == quantidade - 1:
+                arquivo.write(cpf)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(cpf + "\n")
 
 # Função para gerar RGs sem o nome da variável
 def gerar_rgs_n(quantidade):
     pasta = "massas"
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "rg.txt"), "w") as arquivo:
-        for _ in range(quantidade):
+        for i in range(quantidade):
             rg = geraRG()
-            arquivo.write(rg + "\n")
-    print(f"{quantidade} RGs gerados e salvos em 'massas/rg.txt'.")
+            if i == quantidade - 1:
+                arquivo.write(rg)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(rg + "\n")
 
 # Função para gerar CNPJs sem o nome da variável
 def gerar_cnpjs_n(quantidade):
     pasta = "massas"
     os.makedirs(pasta, exist_ok=True)  # Cria o diretório "massas" se não existir
     with open(os.path.join(pasta, "cnpj.txt"), "w") as arquivo:
-        for _ in range(quantidade):
+        for i in range(quantidade):
             cnpj = geraCNPJ()
-            arquivo.write(cnpj + "\n")
-    print(f"{quantidade} CNPJs gerados e salvos em 'massas/cnpj.txt'.")
+            if i == quantidade - 1:
+                arquivo.write(cnpj)  # Para a última linha, não inclui o caractere de quebra de linha
+            else:
+                arquivo.write(cnpj + "\n")
